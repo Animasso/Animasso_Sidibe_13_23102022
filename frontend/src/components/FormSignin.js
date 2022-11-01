@@ -3,13 +3,18 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../userActions/userAction";
+import { useEffect } from "react";
 
 function FormSignin(props) {
   let navigate = useNavigate();
-  const { loading, error } = useSelector((state) => state.user);
+  const { loading, userInfo, error } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/user/login");
+    }
+  }, [navigate, userInfo]);
   const submitForm = (data) => {
     dispatch(userLogin(data));
   };
