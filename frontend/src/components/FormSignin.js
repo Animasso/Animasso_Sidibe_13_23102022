@@ -1,22 +1,27 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { userLogin } from "../userActions/userAction";
+
 function FormSignin(props) {
   let navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  const { loading, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
+
+  const submitForm = (data) => {
+    dispatch(userLogin(data));
+  };
+
   return (
     <>
       <main className="main bg-dark">
         <section className="sign-in-content">
           <i className="fa fa-user-circle sign-in-icon"></i>
           <h1>Sign In</h1>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(submitForm)}>
+            {error && <Error>{error}</Error>}
             <div className="input-wrapper">
               <label htmlFor="username">Username</label>
               <input
@@ -43,14 +48,7 @@ function FormSignin(props) {
               <label htmlFor="remember-me">Remember me</label>
             </div>
 
-            <button
-              type="submit"
-              className="sign-in-button"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/profile");
-              }}
-            >
+            <button type="submit" className="sign-in-button" disabled={loading}>
               Sign In
             </button>
           </form>
