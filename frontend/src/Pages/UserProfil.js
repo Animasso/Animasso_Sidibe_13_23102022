@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 function userProfil(props) {
   return (
     <>
-      <Navbar content="Sign out" />
+      <Navbar />
       <main className="main bg-dark">
         <div className="header">
           <h1 className="welcome">
@@ -12,7 +12,17 @@ function userProfil(props) {
             <br />
             Tony Jarvis!
           </h1>
-          <button className="edit-button">Edit Name</button>
+          <button
+            className="edit-button"
+            onClick={() => {
+              <>
+                <label htmlFor="username">Username</label>
+                <input type="text" id="username" />
+              </>;
+            }}
+          >
+            Edit Name
+          </button>
         </div>
         <h2 className="sr-only">Accounts</h2>
         <section className="account">

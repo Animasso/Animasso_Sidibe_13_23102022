@@ -1,14 +1,24 @@
 import logo from "../assets/argentBankLogo.png";
 import { useNavigate } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   solid,
-//   regular,
-//   brands,
-//   icon,
-// } from "@fortawesome/fontawesome-svg-core/import.macro";
-function Navbar(props) {
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import { NavLink } from "react-router-dom";
+import { getUserProfile } from "../userActions/userAction";
+
+const Navbar = () => {
   let navigate = useNavigate();
+  // const { token } = useSelector((state) => state.login);
+  const { userInfo, userToken } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
+
+  // automatically authenticate user if token is found
+  useEffect(() => {
+    if (userToken) {
+      dispatch(getUserProfile());
+    }
+  }, [userToken, dispatch]);
+
   return (
     <>
       <nav className="main-nav">
@@ -24,19 +34,29 @@ function Navbar(props) {
           <h1 className="sr-only">Argent Bank</h1>
         </div>
         <div>
-          <div
-            className="main-nav-item"
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            {/* <FontAwesomeIcon icon={solid("user-circle")} /> */}
-            {props.content}
-          </div>
+          {!userInfo ? (
+            <div
+              className="main-nav-item"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Sign in
+            </div>
+          ) : (
+            <div
+              className="main-nav-item"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Log out
+            </div>
+          )}
         </div>
       </nav>
     </>
   );
-}
+};
 
 export default Navbar;

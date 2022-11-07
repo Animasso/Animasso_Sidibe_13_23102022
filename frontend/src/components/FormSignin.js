@@ -7,12 +7,12 @@ import { useEffect } from "react";
 
 function FormSignin(props) {
   let navigate = useNavigate();
-  const { loading, userInfo, error } = useSelector((state) => state.user);
+  const { loading, userInfo } = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   useEffect(() => {
     if (userInfo) {
-      navigate("/user/login");
+      navigate("/user/profile");
     }
   }, [navigate, userInfo]);
   const submitForm = (data) => {
@@ -27,12 +27,8 @@ function FormSignin(props) {
           <h1>Sign In</h1>
           <form onSubmit={handleSubmit(submitForm)}>
             <div className="input-wrapper">
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                id="username"
-                {...register("userName", { required: true })}
-              />
+              <label htmlFor="email">Username</label>
+              <input type="email" id="email" {...register("email")} />
             </div>
             <div className="input-wrapper">
               <label htmlFor="password">Password</label>
@@ -40,7 +36,7 @@ function FormSignin(props) {
                 type="password"
                 id="password"
                 autoComplete="on"
-                {...register("password", { required: true, maxLength: 12 })}
+                {...register("password")}
               />
             </div>
             <div className="input-remember">
@@ -52,7 +48,7 @@ function FormSignin(props) {
               <label htmlFor="remember-me">Remember me</label>
             </div>
 
-            <button type="submit" className="sign-in-button" disabled={loading}>
+            <button type="submit" className="sign-in-button">
               Sign In
             </button>
           </form>

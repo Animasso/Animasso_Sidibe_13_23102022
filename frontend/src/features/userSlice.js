@@ -14,7 +14,7 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: "user",
+  name: "login",
   initialState,
   reducers: {},
   extraReducers: {
@@ -25,7 +25,8 @@ const userSlice = createSlice({
     [userLogin.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.userInfo = payload;
-      state.userToken = payload.userToken;
+      state.userToken = payload.body.token;
+      state.success = true;
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false;
@@ -33,4 +34,5 @@ const userSlice = createSlice({
     },
   },
 });
+
 export default userSlice.reducer;

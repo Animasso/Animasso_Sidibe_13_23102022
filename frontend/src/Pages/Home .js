@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 function Home(props) {
   return (
     <div>
-      <Navbar content="Sign in" />
+      <Navbar />
       <main>
         <div className="hero">
           <section className="hero-content">

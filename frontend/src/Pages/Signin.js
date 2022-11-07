@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 function Signin(props) {
   return (
     <div>
-      <Navbar content="Sign in" />
+      <Navbar />
       <FormSignin />
       <Footer />
     </div>
