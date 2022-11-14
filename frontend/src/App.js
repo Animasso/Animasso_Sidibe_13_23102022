@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./styles/index.css";
 import Signin from "./Pages/Signin";
 import UserProfil from "./Pages/UserProfil";
+import Error from "./Pages/Error";
 function App() {
   return (
     <div>
@@ -13,6 +14,7 @@ function App() {
         <Route />
         <Route path="/user/profile" element={<UserProfil />} />
         <Route />
+        <Route path="*" element={<Error />}></Route>
       </Routes>
     </div>
   );

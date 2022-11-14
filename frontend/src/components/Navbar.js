@@ -1,15 +1,16 @@
 import logo from "../assets/argentBankLogo.png";
 import { useNavigate } from "react-router-dom";
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { NavLink } from "react-router-dom";
+import { logout } from "../features/userSlice";
 import { getUserProfile } from "../userActions/userAction";
 
 const Navbar = () => {
   let navigate = useNavigate();
   // const { token } = useSelector((state) => state.login);
   const { userInfo, userToken } = useSelector((state) => state.login);
+  console.log("tok:", userToken);
+  console.log("userInfo:", userInfo);
   const dispatch = useDispatch();
 
   // automatically authenticate user if token is found
@@ -47,7 +48,8 @@ const Navbar = () => {
             <div
               className="main-nav-item"
               onClick={() => {
-                navigate("/");
+                dispatch(logout());
+                navigate("/login");
               }}
             >
               Log out

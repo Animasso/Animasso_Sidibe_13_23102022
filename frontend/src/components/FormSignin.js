@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 function FormSignin(props) {
   let navigate = useNavigate();
-  const { loading, userInfo } = useSelector((state) => state.login);
+  const { userInfo } = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   useEffect(() => {

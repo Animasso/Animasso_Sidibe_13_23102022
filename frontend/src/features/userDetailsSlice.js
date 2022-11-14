@@ -1,10 +1,13 @@
 // userDetailSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 import { getUserProfile } from "../userActions/userAction";
-
+const userToken = localStorage.getItem("userToken")
+  ? localStorage.getItem("userToken")
+  : null;
+console.log("userToken:", userToken);
 const initialState = {
   loading: true,
-  success: false,
+  userToken,
   firstName: null,
   lastName: null,
   error: null,
@@ -17,7 +20,6 @@ const userDetailSlice = createSlice({
   extraReducers: {
     [getUserProfile.pending]: (state) => {
       state.loading = true;
-      state.success = false;
       state.firstName = null;
       state.lastName = null;
     },
