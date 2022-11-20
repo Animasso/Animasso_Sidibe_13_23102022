@@ -5,7 +5,7 @@ import Account from "../components/Account";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../userActions/userAction";
-function UserProfil(props) {
+function UserProfil() {
   const { firstName, lastName, userToken } = useSelector(
     (state) => state.userDetails
   );
