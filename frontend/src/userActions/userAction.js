@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+
 export const userLogin = createAsyncThunk(
   "user/login",
   async ({ email, password }, { rejectWithValue }) => {
@@ -66,7 +66,7 @@ export const getUserProfile = createAsyncThunk(
 // userEdit.js
 export const editUser = createAsyncThunk(
   "user/profile",
-  async (arg, { getState, userFirstName, userLastName, rejectWithValue }) => {
+  async ({ userFirstName, userLastName }, { getState, rejectWithValue }) => {
     try {
       const { userDetails } = getState();
       console.log("userDetails:", userDetails);
