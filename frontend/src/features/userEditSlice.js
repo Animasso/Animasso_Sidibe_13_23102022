@@ -7,8 +7,8 @@ const userToken = localStorage.getItem("userToken")
 
 const initialState = {
   loading: false,
-  firstName: null,
-  lastName: null,
+  firstName: "",
+  lastName: "",
   userToken,
   error: null,
   success: false,
@@ -22,13 +22,12 @@ const editUserSlice = createSlice({
     [editUser.pending]: (state) => {
       state.loading = true;
       state.error = null;
-      state.userToken = userToken;
     },
     [editUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.firstName = payload.body.firstName;
       state.lastName = payload.body.lastName;
-      state.userToken = userToken;
+
       state.success = true;
     },
     [editUser.rejected]: (state, { payload }) => {

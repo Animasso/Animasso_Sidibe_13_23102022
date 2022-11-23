@@ -10,8 +10,8 @@ function UserProfil() {
     (state) => state.userDetails
   );
   const dispatch = useDispatch();
-  // console.log("lastName:", lastName);
-  // console.log("firstname:", firstName);
+  console.log("lastName:", lastName);
+  console.log("firstname:", firstName);
   const [edit, setEdit] = useState(false);
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");

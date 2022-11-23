@@ -6,6 +6,7 @@ import { userLogin } from "../userActions/userAction";
 import { useEffect } from "react";
 
 function FormSignin(props) {
+  // componentDidMount();
   let navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.login);
   const dispatch = useDispatch();
@@ -13,6 +14,9 @@ function FormSignin(props) {
   useEffect(() => {
     if (userInfo) {
       navigate("/user/profile");
+    }
+    if (!userInfo) {
+      localStorage.removeItem("userToken");
     }
   }, [navigate, userInfo]);
   const submitForm = (data) => {

@@ -8,8 +8,8 @@ console.log("userToken:", userToken);
 const initialState = {
   loading: true,
   userToken,
-  firstName: null,
-  lastName: null,
+  firstName: "",
+  lastName: "",
   error: null,
 };
 
@@ -20,8 +20,8 @@ const userDetailSlice = createSlice({
   extraReducers: {
     [getUserProfile.pending]: (state) => {
       state.loading = true;
-      state.firstName = null;
-      state.lastName = null;
+      state.firstName = "";
+      state.lastName = "";
     },
     [getUserProfile.fulfilled]: (state, { payload }) => {
       state.loading = false;
