@@ -30,9 +30,9 @@ export const userLogin = createAsyncThunk(
 );
 
 // userDetail.js
-const userToken = localStorage.getItem("userToken")
-  ? localStorage.getItem("userToken")
-  : null;
+// const userToken = localStorage.getItem("userToken")
+//   ? localStorage.getItem("userToken")
+//   : null;
 export const getUserProfile = createAsyncThunk(
   "user/profile",
 
@@ -44,7 +44,7 @@ export const getUserProfile = createAsyncThunk(
 
       const config = {
         headers: {
-          Authorization: `Bearer ${userToken}`,
+          Authorization: `Bearer ${login.userToken}`,
         },
       };
       const { data } = await axios.post(
@@ -64,13 +64,16 @@ export const getUserProfile = createAsyncThunk(
   }
 );
 // userEdit.js
+
 export const editUser = createAsyncThunk(
   "user/profile",
   async ({ userFirstName, userLastName }, { getState, rejectWithValue }) => {
     try {
       const { userDetails } = getState();
       console.log("userDetails:", userDetails);
-
+      const userToken = localStorage.getItem("userToken")
+        ? localStorage.getItem("userToken")
+        : null;
       const config = {
         headers: {
           "Content-Type": "application/json",
