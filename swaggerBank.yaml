@@ -142,13 +142,45 @@ paths:
         '500':
           description: Internal Server Error
   /account/{accountId}/transactions/{transactionId}:
-   get:
+    get:
       security:
         - Bearer: []
       tags:
       - User Account Transactions
       summary: Details of a transaction API
       description: API for Fetching details for a transaction
+      parameters:
+      - in: header
+        name: Authorization
+        description: Attach Bearer JWT token
+        type: string
+        required: true
+      - name: accountId
+        in: path
+        description: User's account ID
+        type: integer
+        required: true
+      - name: transactionId
+        in: path
+        description: User's account transaction ID
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Transaction retrieved successully
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    delete:
+      security:
+        - Bearer: []
+      tags:
+      - User Account Transactions
+      summary: Delete a transaction API
+      description: API for deleting details for a transaction
       parameters:
       - in: header
         name: Authorization
@@ -167,15 +199,15 @@ paths:
         required: true
       responses:
         '200':
-          description: Transaction retrieved successully
+          description: Transaction delete successully
           schema:
             $ref: '#/definitions/Transactions'
         '400':
           description: Invalid Fields
         '500':
-          description: Internal Server Error
+          description: Internal Server Error    
   /account/{accountId}/transactions/{transactionId}/note:
-   post:
+    post:
       security:
         - Bearer: []
       tags:
@@ -214,7 +246,7 @@ paths:
         '500':
           description: Internal Server Error
   /account/{accountId}/transactions/{transactionId}/category:
-   put:
+    put:
       security:
         - Bearer: []
       tags:
@@ -252,39 +284,8 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error 
-  /account/{accountId}/transactions/{transactionId}/delete:
-   delete:
-      security:
-        - Bearer: []
-      tags:
-      - User Account Transactions
-      summary: Delete a transaction API
-      description: API for deleting details for a transaction
-      parameters:
-      - in: header
-        name: Authorization
-        description: Attach Bearer JWT token
-        type: string
-        required: true
-      - in: path
-        name: accountId
-        description: User's account ID
-        type: integer
-        required: true
-      - in: path
-        name: transactionId
-        description: User's account transaction ID
-        type: integer
-        required: true
-      responses:
-        '200':
-          description: Transaction delete successully
-          schema:
-            $ref: '#/definitions/Transactions'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error        
+    
+        
 securityDefinitions:
   Bearer:
     type: apiKey
