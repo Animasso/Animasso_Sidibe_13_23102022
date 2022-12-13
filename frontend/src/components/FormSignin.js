@@ -6,7 +6,6 @@ import { userLogin } from "../userActions/userAction";
 import { useEffect } from "react";
 
 function FormSignin(props) {
-  // componentDidMount();
   let navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.login);
   const dispatch = useDispatch();
