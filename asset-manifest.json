@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Animasso_Sidibe_13_23102022/static/css/main.f233601f.css",
+    "main.js": "/Animasso_Sidibe_13_23102022/static/js/main.a8131388.js",
+    "static/js/787.cda612ba.chunk.js": "/Animasso_Sidibe_13_23102022/static/js/787.cda612ba.chunk.js",
+    "static/media/bank-tree.jpeg": "/Animasso_Sidibe_13_23102022/static/media/bank-tree.4d59987c7c62b024b014.jpeg",
+    "static/media/icon-security.png": "/Animasso_Sidibe_13_23102022/static/media/icon-security.1c819fa1007a5c53e6a9.png",
+    "static/media/argentBankLogo.png": "/Animasso_Sidibe_13_23102022/static/media/argentBankLogo.e031a16c76ab9bbbf78a.png",
+    "static/media/icon-chat.png": "/Animasso_Sidibe_13_23102022/static/media/icon-chat.e238539d82b5a5f63c33.png",
+    "static/media/icon-money.png": "/Animasso_Sidibe_13_23102022/static/media/icon-money.8ec88bb1a5070fd6513a.png",
+    "index.html": "/Animasso_Sidibe_13_23102022/index.html",
+    "main.f233601f.css.map": "/Animasso_Sidibe_13_23102022/static/css/main.f233601f.css.map",
+    "main.a8131388.js.map": "/Animasso_Sidibe_13_23102022/static/js/main.a8131388.js.map",
+    "787.cda612ba.chunk.js.map": "/Animasso_Sidibe_13_23102022/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f233601f.css",
+    "static/js/main.a8131388.js"
+  ]
+}
